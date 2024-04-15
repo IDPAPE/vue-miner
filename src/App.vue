@@ -7,8 +7,17 @@ const appState = computed(()=> AppState)
 
 function addCheese(){
   console.log('adding cheese')
+  moonMinerService.calcClickStats()
   moonMinerService.addCheese()
 }
+
+const clickStats = computed(()=> {
+  let clickUpgrades = AppState.clickUpgrades
+        let clickStats = AppState.clickStats
+        clickStats = 0
+        clickUpgrades.forEach(upgrade => clickStats += (upgrade.multiplier * upgrade.quantity))
+        return clickStats
+})
 
 </script>
 
@@ -28,7 +37,7 @@ function addCheese(){
 
     <section class="row justify-content-center">
       <div class="col-2 border border-dark">
-        <h1>click stats here</h1>
+        <h1><i class="mdi mdi-cursor-default"></i> {{ clickStats }}</h1>
       </div>
       <div class="col-5 text-center border border-dark">
         <h1> {{ AppState.cheese }} 🧀</h1>
