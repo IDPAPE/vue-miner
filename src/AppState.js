@@ -24,7 +24,7 @@ export const AppState = reactive({
     new Upgrade({
       name: 'Augur',
       price: 2,
-      quantity: 2,
+      quantity: 0,
       multiplier: 2
     })
   ],
