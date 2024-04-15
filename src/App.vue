@@ -2,13 +2,12 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { AppState } from './AppState.js'
+import { moonMinerService } from './services/MoonMinerService.js';
 const appState = computed(()=> AppState)
-
-let cheese = ref(0)
 
 function addCheese(){
   console.log('adding cheese')
-  cheese.value ++
+  moonMinerService.addCheese()
 }
 
 </script>
@@ -21,23 +20,34 @@ function addCheese(){
   </header>
   <main class="container-fluid">
     
-    <section class="row">
+    <section class="row justify-content-center">
       <div class="col-10 text-center">
-        <h1>🌕</h1>
+        <h1 @click="addCheese()">🌕</h1>
       </div>
     </section>
 
     <section class="row justify-content-center">
-      <div class="col-3">
+      <div class="col-2 border border-dark">
         <h1>click stats here</h1>
       </div>
-      <div class="col-6">
-        <h1>cheese count here</h1>
+      <div class="col-5 text-center border border-dark">
+        <h1> {{ AppState.cheese }} 🧀</h1>
       </div>
-      <div class="col-3">
+      <div class="col-2 border border-dark">
         <h1>auto stats here</h1>
       </div>
     </section>
+
+    <section class="row justify-content=center">
+      <div class="col-6 border border-dark">
+        <h1>click upgrades here</h1>
+      </div>
+      <div class="col-6 border border-dark">
+        <h1>auto upgrades here</h1>
+      </div>
+
+    </section>
+    
   </main>
 </template>
 
